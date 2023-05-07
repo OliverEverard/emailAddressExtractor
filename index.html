@@ -18,15 +18,20 @@
           });
       </script>
 
-    <section class="text-gray-600 body-font">
+   
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+      <div class="text-center lg:w-2/3 w-full">
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Email Address Extractor</h1>
         <p class="mb-8 leading-relaxed sm:text-2xl">Paste text containing email addresses in the field above, and they will be extracted from it, and outputed below in the comma delimited form. This is all done in your browser, the email addresses are not uploaded to the internet or stored in any other way.</p>
-      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <textarea id="input-textarea" class="w-full h-48 p-2 border border-gray-300 rounded-md mb-6 resize-none" placeholder="Enter text here..."></textarea>
-        <button id="extract-button" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Extract Emails</button>
-        <p id="output-text" class="w-full mt-6 p-2 border border-gray-300 rounded-md bg-gray-100 hidden"></p>
+        <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+            <textarea id="input-textarea" class="w-full h-48 p-2 border border-gray-300 rounded-md mb-6 resize-none" placeholder="Enter text here..."></textarea>
+            <button id="extract-button" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Extract Emails</button>
+            <p id="output-text" class="w-full mt-6 p-2 border border-gray-300 rounded-md bg-gray-100 hidden"></p>
+          </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <script>
       // Define regular expression pattern for email address
@@ -55,3 +60,5 @@
     </script>
   </body>
 </html>
+
+
