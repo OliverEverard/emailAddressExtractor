@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Email Extractor | Oli Everard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="https://www.olieverard.co.uk/src/favicon.ico">
+    <meta name="viewport" content="width=device-width">
+  </head>
+
+  <body class="bg-white">
+    <div id="navbar-container"></div>
+    <script>
+
+        fetch('https://www.olieverard.co.uk/components/navbar.html')
+          .then(response => response.text())
+          .then(html => {
+            document.querySelector('#navbar-container').innerHTML = html;
+          });
+      </script>
+
+    <section class="text-gray-600 body-font">
+      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+        <textarea id="input-textarea" class="w-full h-48 p-2 border border-gray-300 rounded-md mb-6 resize-none" placeholder="Enter text here..."></textarea>
+        <button id="extract-button" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Extract Emails</button>
+        <p id="output-text" class="w-full mt-6 p-2 border border-gray-300 rounded-md bg-gray-100 hidden"></p>
+      </div>
+    </section>
+
+    <script>
+      // Define regular expression pattern for email address
+      const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+
+      // Get elements from the page
+      const inputTextarea = document.getElementById('input-textarea');
+      const extractButton = document.getElementById('extract-button');
+      const outputText = document.getElementById('output-text');
+
+      // Listen for click events on the extract button
+      extractButton.addEventListener('click', () => {
+        // Get the input text from the input textarea
+        const inputText = inputTextarea.value;
+
+        // Find all email addresses in the input text and add them to an array
+        const matches = inputText.match(emailPattern) || [];
+        const emails = matches.filter((email, index, self) => self.indexOf(email) === index);
+
+        // Set the output text to the emails as a comma-separated list
+        outputText.textContent = emails.join(', ');
+
+        // Show the output text
+        outputText.classList.remove('hidden');
+      });
+    </script>
+  </body>
+</html>
